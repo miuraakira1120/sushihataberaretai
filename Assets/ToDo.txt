@@ -1,0 +1,4 @@
+1f前の角(prevBonePos)から今の角(nowPos)のベクトル(vMoveBonePos)を作って、そのベクトルに前の角からレイ（rayMove）を飛ばして、
+rayMove.hitがtrueなおかつrayMove.distがvMoveの大きさより小さければ、
+rayMoveのベクトルを作って、そのx,y,z成分の分だけ移動
+

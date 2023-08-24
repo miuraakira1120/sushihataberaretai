@@ -1,0 +1,27 @@
+{
+  "osushiya": {
+    "loadFile": "osushiya.jpg",
+    "positionX": 0.0,
+    "positionY": 0.0,
+    "positionZ": 0.5,
+    "rotateX": 0.0,
+    "rotateY": 0.0,
+    "rotateZ": 0.0,
+    "scaleX": 0.699999988079071,
+    "scaleY": 0.699999988079071,
+    "scaleZ": 1.0,
+    "alpha": 255.0
+  },
+  "TitleName": {
+    "loadFile": "TitleName.png",
+    "positionX": -0.05000000074505806,
+    "positionY": 0.30000001192092896,
+    "positionZ": 0.5,
+    "rotateX": 0.0,
+    "rotateY": 0.0,
+    "rotateZ": 0.0,
+    "scaleX": 1.5,
+    "scaleY": 1.5,
+    "scaleZ": 1.0,
+    "alpha": 255.0
+  }}
