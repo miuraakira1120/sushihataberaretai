@@ -12,7 +12,7 @@ class Tuna : public Neta
 	};
 
 	//スキルをためる時間の最大値
-	const int ACCUMULATE_MAX = 300;
+	const float ACCUMULATE_MAX = 4.0f;
 
 	//スキルの発動時間
 	const int SKILL_TIME_ACCEL = 30;
@@ -21,10 +21,10 @@ class Tuna : public Neta
 	const int SKILL_TIME = SKILL_TIME_ACCEL + SKILL_TIME_KEEP + SKILL_TIME_DECEL;
 
 	//加速率
-	const float ACCELERATION_RATE = 1.0f;
+	const float ACCELERATION_RATE = 0.02f;
 
 	//減速率
-	const float DECELERATION_RATE = 0.5f;
+	const float DECELERATION_RATE = 0.05f;
 
 	//現在ためているスキルの時間
 	float accumulateTime;

@@ -3,7 +3,7 @@
 #include "Engine/Input.h"
 
 Tuna::Tuna(GameObject* parent, std::string pathName)
-	:Neta(parent, "Tuna", pathName), accumulateTime(0.0f), isSkill(false), skillTime(0), accel(0), accelFlag(false)
+	:Neta(parent, "Tuna", pathName), accumulateTime(0.0f), isSkill(false), skillTime(0), accel(0.0f), accelFlag(false)
 {
 	transform_.position_.y = PLAYER_SIZE.y + MAGURO_SIZE.y;
 }
@@ -47,23 +47,15 @@ void Tuna::Skill()
 		//ためた時間に応じた速さまで加速
 		if (!accelFlag)
 		{
-			if (accumulateTime > accel)
-			{
-				//加速度を計算
-				accel += ACCELERATION_RATE;
-
-				//プレイヤーを移動させる
-				Player* pPlayer = (Player*)GetParent();
-				pPlayer->Move(accel, false);
-			}
-			else
-			{
-				accelFlag = true;
-			}
+			accel = accumulateTime;
+			accelFlag = true;
 		}
 		else
 		{
 			accel -= DECELERATION_RATE;
+			//プレイヤーを移動させる
+			Player* pPlayer = (Player*)GetParent();
+			pPlayer->Move(accel, false);
 		}
 		
 		//突進が終わったら
