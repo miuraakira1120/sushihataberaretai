@@ -4,7 +4,6 @@
 
 class Tuna : public Neta
 {
-<<<<<<< HEAD
 	const XMFLOAT3 MAGURO_SIZE =
 	{
 		0.25f, //マグロのXのサイズ（1倍）
@@ -42,8 +41,6 @@ class Tuna : public Neta
 	//スキル使用中に使うフラグ
 	bool accelFlag;
 
-=======
->>>>>>> e68dd50f38646d11af631c92c2300af87bd8bf3e
 public:
 	/// <summary>
 	/// コンストラクタ

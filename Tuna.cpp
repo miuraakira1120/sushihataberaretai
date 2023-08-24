@@ -14,7 +14,6 @@ void Tuna::Update()
 	Skill();
 	//重力の処理
 	//Gravity();
-<<<<<<< HEAD
 }
 
 //固有のスキル
@@ -81,6 +80,4 @@ void Tuna::Skill()
 		}		
 	}
 	
-=======
->>>>>>> e68dd50f38646d11af631c92c2300af87bd8bf3e
 }
