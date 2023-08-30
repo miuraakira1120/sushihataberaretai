@@ -57,7 +57,7 @@ namespace Model
 	//モデルをロード
 	//引数：fileName　ファイル名
 	//戻値：そのモデルデータに割り当てられた番号
-	int Load(std::string fileName);
+	int Load(std::string fileName, float alpha = 1.0f);
 
 	//描画
 	//引数：handle	描画したいモデルの番号

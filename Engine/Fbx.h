@@ -58,7 +58,7 @@ class Fbx
 	//ノードの中身を調べる
 	//引数：pNode		調べるノード
 	//引数：pPartsList	パーツのリスト
-	void CheckNode(FbxNode* pNode, std::vector<FbxParts*> *pPartsList);
+	void CheckNode(FbxNode* pNode, std::vector<FbxParts*> *pPartsList, float alpha);
 
 
 
@@ -70,7 +70,7 @@ public:
 	//ロード
 	//引数：fileName	ファイル名
 	//戻値：成功したかどうか
-	virtual HRESULT Load(std::string fileName);
+	virtual HRESULT Load(std::string fileName, float alpha);
 
 	//描画
 	//引数：World	ワールド行列

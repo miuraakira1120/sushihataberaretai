@@ -32,14 +32,14 @@ class Maguro : public GameObject
     int hModel_;            //モデル番号
     bool isLandingMotion;   //落下モーションに入っているか
     bool isFullFall;        //落下しきったかどうか
-    //Syari* pSyari;          //シャリのポインタ
+    //Syari* pSyari;        //シャリのポインタ
     int hSyariModel;        //シャリのモデル番号
     Stage* pStage;          //ステージのポインタ
     int hGroundModel;       //ステージのモデル番号
     XMFLOAT3 vertexBonePos[8];
     XMFLOAT3 prevPos;       //1f前の自分の位置
     float gravity;          //今受けている重力の力(マイナスなら重力を振り切って上に行く)
-    Syari* pSyari;     //親のポインタ
+    Syari* pSyari;          //親のポインタ
     EmitterData explosion;  //爆発エフェクトの情報
 
     

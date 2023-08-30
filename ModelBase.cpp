@@ -24,13 +24,13 @@ void ModelBase::Initialize()
 //çXêV
 void ModelBase::Update()
 {
-    scroll += 0.1f;
+    //scroll += 0.1f;
 }
 
 //ï`âÊ
 void ModelBase::Draw()
 {
-    Model::SetScrollVal(hModel_, scroll);
+    //Model::SetScrollVal(hModel_, scroll);
     Model::SetTransform(hModel_, transform_);
     Model::Draw(hModel_);
 }

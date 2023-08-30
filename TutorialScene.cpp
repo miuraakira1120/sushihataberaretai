@@ -14,14 +14,14 @@ TutorialScene::TutorialScene(GameObject* parent)
 //初期化
 void TutorialScene::Initialize()
 {
+	//プレイヤーを生成
+	CharacterInstantiate<Player>(this, "syari.fbx");
+
 	//ステージを生成
 	GameManager::SetNowStage((StageBase*)StageInstantiate<TutorialStage>(this, "Tutorial.fbx"));
 
 	//カメラのコントローラーを生成
 	Instantiate<Controller>(this);
-
-	//プレイヤーを生成
-	CharacterInstantiate<Player>(this, "syari.fbx");
 }
 
 //更新

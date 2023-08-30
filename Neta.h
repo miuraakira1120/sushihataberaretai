@@ -1,11 +1,24 @@
 #pragma once
 #include "Engine/GameObject.h"
+#include "PlayerBase.h"
 
 class Neta : public GameObject
 {
 private:
+    const XMFLOAT3 NETA_SIZE =
+    {
+        0.25f, //ネタのXのサイズ（1倍）
+        0.25f, //ネタのYのサイズ（1倍）
+        1.5f,  //ネタのZのサイズ（1倍）
+    };
+
     int   hModel_;               //モデル番号
     float gravity;               //今受けている重力の力(マイナスなら重力を振り切って上に行く)
+
+protected:
+    PlayerBase* pPlayer;          //PlayerのPlayerBase型のポインタ
+
+
 public:
     //コンストラクタ
 	Neta(GameObject* parent, const std::string& name, const std::string& pathFilename);

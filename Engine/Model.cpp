@@ -15,7 +15,7 @@ namespace Model
 	}
 
 	//モデルをロード
-	int Load(std::string fileName)
+	int Load(std::string fileName, float alpha)
 	{
 			ModelData* pData = new ModelData;
 
@@ -37,7 +37,7 @@ namespace Model
 			if (isExist == false)
 			{
 				pData->pFbx = new Fbx;
-				if (FAILED(pData->pFbx->Load(fileName)))
+				if (FAILED(pData->pFbx->Load(fileName, alpha)))
 				{
 					//開けなかった
 					SAFE_DELETE(pData->pFbx);

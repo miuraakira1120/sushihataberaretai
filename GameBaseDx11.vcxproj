@@ -181,6 +181,7 @@
     <ClCompile Include="ModelBase.cpp" />
     <ClCompile Include="MoveByMouthButton.cpp" />
     <ClCompile Include="Neta.cpp" />
+    <ClCompile Include="NetaMaterial.cpp" />
     <ClCompile Include="OBB.cpp" />
     <ClCompile Include="Pause.cpp" />
     <ClCompile Include="PerlinNoise.cpp" />
@@ -260,6 +261,7 @@
     <ClInclude Include="ModelBase.h" />
     <ClInclude Include="MoveByMouthButton.h" />
     <ClInclude Include="Neta.h" />
+    <ClInclude Include="NetaMaterial.h" />
     <ClInclude Include="OBB.h" />
     <ClInclude Include="Pause.h" />
     <ClInclude Include="PerlinNoise.h" />

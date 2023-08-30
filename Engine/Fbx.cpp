@@ -21,7 +21,7 @@ Fbx::~Fbx()
 	pFbxManager_->Destroy();
 }
 
-HRESULT Fbx::Load(std::string fileName)
+HRESULT Fbx::Load(std::string fileName, float alpha)
 {
 	// FBXの読み込み
 	pFbxManager_ = FbxManager::Create();
@@ -60,7 +60,7 @@ HRESULT Fbx::Load(std::string fileName)
 	//1個ずつチェック
 	for (int i = 0; childCount > i; i++)
 	{
-		CheckNode(rootNode->GetChild(i), &parts_);
+		CheckNode(rootNode->GetChild(i), &parts_, alpha);
 	}
 
 
@@ -71,7 +71,7 @@ HRESULT Fbx::Load(std::string fileName)
 	return S_OK;
 }
 
-void Fbx::CheckNode(FbxNode * pNode, std::vector<FbxParts*>* pPartsList)
+void Fbx::CheckNode(FbxNode * pNode, std::vector<FbxParts*>* pPartsList, float alpha)
 {
 	//そのノードにはメッシュ情報が入っているだろうか？
 	FbxNodeAttribute* attr = pNode->GetNodeAttribute();
@@ -79,7 +79,7 @@ void Fbx::CheckNode(FbxNode * pNode, std::vector<FbxParts*>* pPartsList)
 	{
 		//パーツを用意
 		FbxParts* pParts = new FbxParts;
-		pParts->Init(pNode);
+		pParts->Init(pNode, alpha);
 
 		//パーツ情報を動的配列に追加
 		pPartsList->push_back(pParts);
@@ -94,7 +94,7 @@ void Fbx::CheckNode(FbxNode * pNode, std::vector<FbxParts*>* pPartsList)
 		//一人ずつチェック
 		for (int i = 0; i < childCount; i++)
 		{
-			CheckNode(pNode->GetChild(i), pPartsList);
+			CheckNode(pNode->GetChild(i), pPartsList, alpha);
 		}
 	}
 }

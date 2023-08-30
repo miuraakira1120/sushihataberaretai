@@ -48,7 +48,7 @@ FbxParts::~FbxParts()
 }
 
 //FBXファイルから情報をロードして諸々準備する
-HRESULT FbxParts::Init(FbxNode *pNode)
+HRESULT FbxParts::Init(FbxNode *pNode, float alpha)
 {
 	//ノードからメッシュの情報を取得
 	FbxMesh* mesh = pNode->GetMesh();
@@ -59,11 +59,11 @@ HRESULT FbxParts::Init(FbxNode *pNode)
 	polygonVertexCount_ = mesh->GetPolygonVertexCount();	//ポリゴン頂点インデックス数 
 
 
-	InitVertex(mesh);		//頂点バッファ準備
-	InitMaterial(pNode);	//マテリアル準備
-	InitIndex(mesh);		//インデックスバッファ準備
-	InitSkelton(mesh);		//骨の情報を準備
-	IntConstantBuffer();	//コンスタントバッファ（シェーダーに情報を送るやつ）準備
+	InitVertex(mesh);			//頂点バッファ準備
+	InitMaterial(pNode, alpha);	//マテリアル準備
+	InitIndex(mesh);			//インデックスバッファ準備
+	InitSkelton(mesh);			//骨の情報を準備
+	IntConstantBuffer();		//コンスタントバッファ（シェーダーに情報を送るやつ）準備
 
 	return E_NOTIMPL;
 }
@@ -128,7 +128,7 @@ void FbxParts::InitVertex(fbxsdk::FbxMesh * mesh)
 }
 
 //マテリアル準備
-void FbxParts::InitMaterial(fbxsdk::FbxNode * pNode)
+void FbxParts::InitMaterial(fbxsdk::FbxNode * pNode, float alpha)
 {
 
 	// マテリアルバッファの生成
@@ -156,7 +156,7 @@ void FbxParts::InitMaterial(fbxsdk::FbxNode * pNode)
 
 		// 環境光＆拡散反射光＆鏡面反射光の反射成分値をマテリアルバッファにコピー
 		pMaterial_[i].ambient = XMFLOAT4((float)ambient[0], (float)ambient[1], (float)ambient[2], 1.0f);
-		pMaterial_[i].diffuse = XMFLOAT4((float)diffuse[0], (float)diffuse[1], (float)diffuse[2], 1.0f);
+		pMaterial_[i].diffuse = XMFLOAT4((float)diffuse[0], (float)diffuse[1], (float)diffuse[2], alpha);
 		pMaterial_[i].specular = XMFLOAT4(0, 0, 0, 0);
 		pMaterial_[i].shininess = 0;
 

@@ -24,4 +24,7 @@ public:
 
     //開放
     void Release() override;
+
+    //ゲッター
+    int GetModelHandle() { return hModel_; }
 };

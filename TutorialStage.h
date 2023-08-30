@@ -13,4 +13,9 @@ public:
 	/// <param name="parent">親オブジェクト</param>
 	/// <param name="path">表示するモデル</param>
 	TutorialStage(GameObject* parent, std::string path);
+
+	/// <summary>
+	/// 更新前に一度だけ呼ばれる
+	/// </summary>
+	void SetUp() override;
 };

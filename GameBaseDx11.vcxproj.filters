@@ -302,6 +302,7 @@
     <ClCompile Include="PerlinNoise.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Tuna.cpp" />
+    <ClCompile Include="NetaMaterial.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -515,6 +516,7 @@
     <ClInclude Include="PerlinNoise.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Tuna.h" />
+    <ClInclude Include="NetaMaterial.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

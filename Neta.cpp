@@ -11,7 +11,7 @@ namespace
 
 //コンストラクタ
 Neta::Neta(GameObject* parent, const std::string& name, const std::string& pathFilename)
-	:GameObject(parent, name, pathFilename), hModel_(-1), gravity(0)
+	:GameObject(parent, name, pathFilename), hModel_(-1), gravity(0), pPlayer(nullptr)
 {
 }
 
@@ -30,7 +30,10 @@ void Neta::SetUp()
 	assert(hModel_ >= 0);
 
     //初期位置の設定
-    transform_.position_.y = 0.5f + 0.25;
+    transform_.position_.y = PLAYER_SIZE.y + NETA_SIZE.y;
+
+    //PlayerBase型のPlayerのポインタ
+    pPlayer = (PlayerBase*)GetParent();
 }
 
 //親の親から見た位置を入手

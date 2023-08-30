@@ -4,13 +4,6 @@
 
 class Tuna : public Neta
 {
-	const XMFLOAT3 MAGURO_SIZE =
-	{
-		0.25f, //マグロのXのサイズ（1倍）
-		0.25f, //マグロのYのサイズ（1倍）
-		1.5f,  //マグロのZのサイズ（1倍）
-	};
-
 	//スキルをためる時間の最大値
 	const float ACCUMULATE_MAX = 4.0f;
 

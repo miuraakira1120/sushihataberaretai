@@ -5,7 +5,7 @@
 Tuna::Tuna(GameObject* parent, std::string pathName)
 	:Neta(parent, "Tuna", pathName), accumulateTime(0.0f), isSkill(false), skillTime(0), accel(0.0f), accelFlag(false)
 {
-	transform_.position_.y = PLAYER_SIZE.y + MAGURO_SIZE.y;
+	//transform_.position_.y = PLAYER_SIZE.y + MAGURO_SIZE.y;
 }
 
 //更新
@@ -25,6 +25,9 @@ void Tuna::Skill()
 		//アクティブスキルキーを押していたら
 		if (Input::IsKey(DIK_E))
 		{
+			//プレイヤーの操作を不可能にする
+			pPlayer->SetCanMove(false);
+
 			//最大までためていなかったら
 			if (ACCUMULATE_MAX > accumulateTime)
 			{
@@ -41,9 +44,7 @@ void Tuna::Skill()
 	//ためていた時間に応じて突進する
 	else
 	{
-		//プレイヤーの操作を不可能にする
 		//スキル発動
-
 		//ためた時間に応じた速さまで加速
 		if (!accelFlag)
 		{
@@ -68,8 +69,7 @@ void Tuna::Skill()
 			skillTime	   = 0;
 			accelFlag	   = false;
 			isSkill		   = false;
-			
+			pPlayer->SetCanMove(true);
 		}		
 	}
-	
 }
