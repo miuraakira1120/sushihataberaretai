@@ -44,6 +44,7 @@ void Tuna::Skill()
 	//‚½‚ß‚Ä‚¢‚½ŽžŠÔ‚É‰ž‚¶‚Ä“Ëi‚·‚é
 	else
 	{
+		pPlayer->SetShouldTakeGravity(false);
 		//ƒXƒLƒ‹”­“®
 		//‚½‚ß‚½ŽžŠÔ‚É‰ž‚¶‚½‘¬‚³‚Ü‚Å‰Á‘¬
 		if (!accelFlag)
@@ -70,6 +71,7 @@ void Tuna::Skill()
 			accelFlag	   = false;
 			isSkill		   = false;
 			pPlayer->SetCanMove(true);
+			pPlayer->SetShouldTakeGravity(true);
 		}		
 	}
 }

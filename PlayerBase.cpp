@@ -147,15 +147,19 @@ void PlayerBase::Move(float accel, bool isInverse)
 //重力の処理
 void PlayerBase::Gravity()
 {
-    //スピードの上限に達していなければ
-    if (FALL_SPEED_LIMIT >= gravity)
+    //もし重力を受ける状態なら
+    if (GetShouldTakeGravity())
     {
-        gravity += FALL_SPEED;
-        transform_.position_.y -= gravity;
-    }
-    else
-    {
-        transform_.position_.y -= FALL_SPEED_LIMIT;
+        //スピードの上限に達していなければ
+        if (FALL_SPEED_LIMIT >= gravity)
+        {
+            gravity += FALL_SPEED;
+            transform_.position_.y -= gravity;
+        }
+        else
+        {
+            transform_.position_.y -= FALL_SPEED_LIMIT;
+        }
     }
 }
 

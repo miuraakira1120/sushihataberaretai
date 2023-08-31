@@ -25,12 +25,14 @@ private:
         bool  isGround;              //地面に設置しているか
         bool  canMove;               //動くことができるか
         bool  isCamControll;         //カメラをこのオブジェクトで制御するか
+        bool  shouldTakeGravity;     //重力を受ける状態かどうか
 
         STATE() 
         { 
-            isGround        = false; 
-            canMove         = true;
-            isCamControll   = true;
+            isGround          = false; 
+            canMove           = true;
+            isCamControll     = true;
+            shouldTakeGravity = true;
         }
     }state_;
 
@@ -122,9 +124,11 @@ public:
     void SetIsGround(bool a) { state_.isGround = a; }
     void SetIsCamControll(bool a) { state_.isCamControll = a; }
     void SetCanMove(bool a) { state_.canMove = a; }
+    void SetShouldTakeGravity(bool a) { state_.shouldTakeGravity = a; }
 
     bool GetIsGround() { return state_.isGround; }
     bool GetIsCamControll() { return state_.isCamControll; }
     bool GetCanMove() { return state_.canMove; }
+    bool GetShouldTakeGravity() { return state_.shouldTakeGravity; }
 };
 
