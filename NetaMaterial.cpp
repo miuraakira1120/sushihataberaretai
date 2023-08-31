@@ -1,11 +1,19 @@
 #include "NetaMaterial.h"
 #include "Engine/Model.h"
 #include "ModelBase.h"
+#include "Engine/SphereCollider.h"
+#include "Engine/BoxCollider.h"
+#include "Tuna.h"
 
 //コンストラクタ
 NetaMaterial::NetaMaterial(GameObject* parent)
     :GameObject(parent, "NetaMaterial"), pInternalModel(nullptr)
 {
+}
+
+NetaMaterial::NetaMaterial(GameObject* parent, std::string fileName)
+{
+    internalModelPath = fileName;
 }
 
 //デストラクタ
@@ -21,9 +29,19 @@ void NetaMaterial::Initialize()
     hModel_ = Model::Load(pathName_, MODEL_ALPHA);
     assert(hModel_ >= 0);
 
+    //コライダーをつける
+    SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 0, 0), SPHERE_SIZE);
+    AddCollider(collision);
+
+    //箱型のコライダーをつける（テスト）
+    //BoxCollider* boxCollision = new BoxCollider(XMFLOAT3(0, 0, 0), XMFLOAT3(2, 2, 2));
+    //AddCollider(boxCollision);
+
     //中のモデルの作成
-    pInternalModel = CharacterInstantiate<ModelBase>(this, "maguro.fbx");
+    pInternalModel = CharacterInstantiate<ModelBase>(this, internalModelPath);
     pInternalModel->SetScale(INTERNAL_MODEL_SCALE, INTERNAL_MODEL_SCALE, INTERNAL_MODEL_SCALE);
+
+
 }
 
 //更新
@@ -47,4 +65,25 @@ void NetaMaterial::Draw()
 //開放
 void NetaMaterial::Release()
 {
+}
+
+//何かに当たったら呼び出される関数
+void NetaMaterial::OnCollision(GameObject* pTarget)
+{
+    //プレイヤーにぶつかったら
+    if (pTarget->GetName() == "Player")
+    {
+        //中にあるモデルがマグロなら
+        if (internalModelPath == "maguro.fbx")
+        {
+            //プレイヤーの子オブジェクトを追加
+            CharacterInstantiate<Tuna>(pTarget, "maguro.fbx");
+
+            //中のモデルを消す
+            pInternalModel->KillMe();
+
+            //中のモデルの名前を消す
+            internalModelPath = "";
+        }
+    }
 }

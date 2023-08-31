@@ -27,4 +27,23 @@ public:
 	/// OBB‚Æ•½–Ê‚ÌÕ“Ë”»’è
 	/// </summary>
 	bool OBBvsPlane(OBB& obb, XMFLOAT3 pos, XMVECTOR nomal, float* Len = 0);
+
+	/// <summary>
+	///  OBB‚ÆOBB‚ÌÕ“Ë”»’è
+	/// http://marupeke296.com/COL_3D_No13_OBBvsOBB.html
+	/// </summary>
+	bool ColOBBs(OBB& obb1, OBB& obb2);
+
+	/// <summary>
+	/// •ª—£²‚É“Š‰e‚³‚ê‚½²¬•ª‚©‚ç“Š‰eü•ª’·‚ğZo
+	/// </summary>
+	/// <param name="Sep"></param>
+	/// <param name="e1"></param>
+	/// <param name="e2"></param>
+	/// <param name="e3"></param>
+	/// <returns></returns>
+	float LenSegOnSeparateAxis(XMVECTOR Sep, XMVECTOR e1, XMVECTOR e2, XMVECTOR e3 = { 0,0,0 });
+
+	//OBB‚Æ‹…‘Ì‚ÌÕ“Ë”»’è
+	float LenOBBToPoint(OBB& obb, XMFLOAT3 pos);
 };

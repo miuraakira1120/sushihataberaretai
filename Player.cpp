@@ -3,17 +3,44 @@
 #include "Engine/Input.h"
 #include "ImageBase.h"
 #include "GameManager.h"
+#include "Engine/BoxCollider.h"
 
 
 Player::Player(GameObject* parent, std::string pathName)
 	:PlayerBase(parent, "Player", pathName)
 {
+}
 
+//初期化
+void Player::Initialize()
+{
+	//コライダーをつける(PLAYER_SIZEは半径のため2倍に)
+	BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 0, 0), Math::Float3Mul( PLAYER_SIZE, TWICE));
+	AddCollider(collision);
 }
 
 //更新
 void Player::Update()
 {
+	GameObject* pTmp = nullptr;
+	//もしNetaクラスを継承した子オブジェクトが2つ以上になったら
+	for (auto it = this->GetChildList()->begin(); it != this->GetChildList()->end(); ++it)
+	{
+		//タグがネタなら
+		if ((*it)->GetTag() == "neta")
+		{
+			if (pTmp == nullptr)
+			{
+				pTmp = (*it);
+			} 
+			else
+			{
+				pTmp->KillMe();
+			}
+		}
+	}
+	//古いほうのネタを消す
+
 	//ボタンの処理
 	//もしプレイヤーが入力を受け付けていたら
 	if(GetCanMove())

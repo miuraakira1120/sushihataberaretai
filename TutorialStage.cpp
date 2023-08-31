@@ -10,5 +10,7 @@ TutorialStage::TutorialStage(GameObject* parent, std::string path)
 //更新前に一度だけ呼ばれる
 void TutorialStage::SetUp()
 {
-	Instantiate<NetaMaterial>(this);
+	//NetaMaterial* pNetaMaterial = Instantiate<NetaMaterial>(this);
+	NetaMaterial* pNetaMaterial = NetaMaterialInstantiate<NetaMaterial>(this, "maguro.fbx");
+	pNetaMaterial->SetPosition(4, 0, 4);
 }

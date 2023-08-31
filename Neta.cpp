@@ -13,6 +13,7 @@ namespace
 Neta::Neta(GameObject* parent, const std::string& name, const std::string& pathFilename)
 	:GameObject(parent, name, pathFilename), hModel_(-1), gravity(0), pPlayer(nullptr)
 {
+    this->SetTag("neta");
 }
 
 //•`‰æ

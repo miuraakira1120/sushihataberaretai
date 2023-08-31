@@ -327,3 +327,16 @@ T* StageInstantiate(GameObject* pParent, std::string fileName)
 	return pNewObject;
 }
 
+//NetaMaterialを作成するテンプレート
+template <class T>
+T* NetaMaterialInstantiate(GameObject* pParent, std::string fileName)
+{
+	T* pNewObject = new T(pParent, fileName);
+	if (pParent != nullptr)
+	{
+		pParent->PushBackChild(pNewObject);
+	}
+	pNewObject->Initialize();
+	return pNewObject;
+}
+

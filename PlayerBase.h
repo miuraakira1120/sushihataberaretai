@@ -63,7 +63,10 @@ public:
 
     //‰½‚©‚É“–‚½‚Á‚½
     //ˆø”FpTarget “–‚½‚Á‚½‘Šè
-    virtual void OnCollision(GameObject* pTarget) {};
+    virtual void OnCollision(GameObject* pTarget)
+    {
+        int a = 0;
+    };
 
     //ƒWƒƒƒ“ƒv‚·‚é
     void Jump();

@@ -53,7 +53,7 @@ void PlayerBase::SetUp()
     //Model::RayCast(, &prePosData);  //レイを発射
 
     //子オブジェクトの生成
-    CharacterInstantiate<Tuna>(this, "maguro.fbx");
+    //CharacterInstantiate<Tuna>(this, "maguro.fbx");
     //Instantiate<Maguro>(this);
 }
 

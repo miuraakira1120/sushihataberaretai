@@ -25,6 +25,11 @@ class Collider
 	friend class BoxCollider;
 	friend class SphereCollider;
 
+	//軸の基準
+	const XMVECTOR AXIS_BASE_X = { 1.0f,0,0 };
+	const XMVECTOR AXIS_BASE_Y = { 0,1.0f,0 };
+	const XMVECTOR AXIS_BASE_Z = { 0,0,1.0f };
+
 protected:
 	GameObject*		pGameObject_;	//この判定をつけたゲームオブジェクト
 	ColliderType	type_;			//種類
