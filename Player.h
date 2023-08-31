@@ -21,5 +21,8 @@ public:
     /// 更新
     /// </summary>
     virtual void Update() override;
+
+    //ネタを一つ以下に保つ処理
+    void NetaSingleton();
 };
 

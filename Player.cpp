@@ -22,24 +22,8 @@ void Player::Initialize()
 //更新
 void Player::Update()
 {
-	GameObject* pTmp = nullptr;
-	//もしNetaクラスを継承した子オブジェクトが2つ以上になったら
-	for (auto it = this->GetChildList()->begin(); it != this->GetChildList()->end(); ++it)
-	{
-		//タグがネタなら
-		if ((*it)->GetTag() == "neta")
-		{
-			if (pTmp == nullptr)
-			{
-				pTmp = (*it);
-			} 
-			else
-			{
-				pTmp->KillMe();
-			}
-		}
-	}
-	//古いほうのネタを消す
+	//ネタを一つ以下に保つ処理
+	NetaSingleton();
 
 	//ボタンの処理
 	//もしプレイヤーが入力を受け付けていたら
@@ -85,4 +69,26 @@ void Player::Update()
 	
 	//このオブジェクトにカメラをセットする
 	SetCameraController();
+}
+
+//ネタを一つ以下に保つ処理
+void Player::NetaSingleton()
+{
+	GameObject* pTmp = nullptr;
+	//もしNetaクラスを継承した子オブジェクトが2つ以上になったら
+	for (auto it = this->GetChildList()->begin(); it != this->GetChildList()->end(); ++it)
+	{
+		//タグがネタなら
+		if ((*it)->GetTag() == "neta")
+		{
+			if (pTmp == nullptr)
+			{
+				pTmp = (*it);
+			}
+			else
+			{
+				pTmp->KillMe();
+			}
+		}
+	}
 }
