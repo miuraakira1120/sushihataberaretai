@@ -60,6 +60,7 @@ void NetaMaterial::Draw()
 
     Model::SetTransform(hModel_, transform_);
     Model::Draw(hModel_);
+  
 }
 
 //ŠJ•ú
