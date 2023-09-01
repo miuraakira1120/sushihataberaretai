@@ -60,6 +60,12 @@ void Tuna::Skill()
 			pPlayer->Move(accel, false);
 		}
 		
+		//速度が一定まで落ちたら
+		if (accel < CONSTANT_SPEED)
+		{
+			//重力を受けるようにする
+			pPlayer->SetShouldTakeGravity(true);
+		}
 		//突進が終わったら
 		if (accel < 0)
 		{
@@ -71,7 +77,6 @@ void Tuna::Skill()
 			accelFlag	   = false;
 			isSkill		   = false;
 			pPlayer->SetCanMove(true);
-			pPlayer->SetShouldTakeGravity(true);
 		}		
 	}
 }

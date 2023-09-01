@@ -13,6 +13,9 @@ class Tuna : public Neta
 	const int SKILL_TIME_DECEL = 35;
 	const int SKILL_TIME = SKILL_TIME_ACCEL + SKILL_TIME_KEEP + SKILL_TIME_DECEL;
 
+	//ˆê’èˆÈ‰º‚Ì‘¬“x‚É‚È‚Á‚½‚ç—Ž‚¿‚é
+	const float CONSTANT_SPEED = 2.0f;
+
 	//‰Á‘¬—¦
 	const float ACCELERATION_RATE = 0.02f;
 
