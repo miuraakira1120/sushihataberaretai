@@ -4,6 +4,7 @@
 #include "ImageBase.h"
 #include "GameManager.h"
 #include "Engine/BoxCollider.h"
+#include "VFX.h"
 
 
 Player::Player(GameObject* parent, std::string pathName)
@@ -48,6 +49,30 @@ void Player::Update()
 		if (Input::IsKeyDown(DIK_SPACE))
 		{
 			Jump(); 
+		}
+
+		if (Input::IsKeyDown(DIK_G))
+		{
+			EmitterData ed;
+			ed.textureFileName = "PaticleAssets/star.png";
+			ed.delay = 0;
+			ed.number = 6;
+			ed.lifeTime = 20;
+			ed.direction = XMFLOAT3(0, 1, 0);
+			ed.directionRnd = XMFLOAT3(90, 90, 0);
+			ed.speed = 00.1f;
+			ed.speedRnd = 0.8;
+			ed.sizeRnd = XMFLOAT2(0.4, 0.4);
+			ed.scale = XMFLOAT2(1.05, 1.05);
+			ed.deltaColor = XMFLOAT4(0, -1.0 / 20, 0, -1.0 / 20);
+
+			ed.color = XMFLOAT4(1, 1, 0.1, 1);
+			ed.size = XMFLOAT2(0.65, 0.65);
+			ed.position = XMFLOAT3(0, 0, 0);
+			ed.rotateRnd = XMFLOAT3(0, 0, 0);
+			
+
+			VFX::Start(ed);
 		}
 	}
 

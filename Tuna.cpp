@@ -4,7 +4,7 @@
 #include "VFX.h"
 
 Tuna::Tuna(GameObject* parent, std::string pathName)
-	:Neta(parent, "Tuna", pathName), accumulateTime(0.0f), isSkill(false), skillTime(0), accel(0.0f), accelFlag(false)
+	:Neta(parent, "Tuna", pathName), accumulateTime(0.0f), isSkill(false), skillTime(0), accel(0.0f), accelFlag(false), isFullPower(false)
 {
 	//transform_.position_.y = PLAYER_SIZE.y + MAGURO_SIZE.y;
 }
@@ -32,49 +32,33 @@ void Tuna::Skill()
 			//最大までためていなかったら
 			if (ACCUMULATE_MAX > accumulateTime)
 			{
-				EmitterData chargeEffect;
-				chargeEffect.textureFileName = "PaticleAssets/CloudA.png";
-				chargeEffect.delay = 0;
-				chargeEffect.number = 80;
-				chargeEffect.lifeTime = 20;
-				chargeEffect.direction = XMFLOAT3(0, 1, 0);
-				chargeEffect.directionRnd = XMFLOAT3(90, 90, 90);
-				chargeEffect.speed = 0.1f;
-				chargeEffect.speedRnd = 0.8;
+				//エフェクト
+				EmitterData chargeEffect = VFX::SetEmitterDataCharge();
+				chargeEffect.color = VFX::RED;
 				chargeEffect.size = XMFLOAT2(0.1f * accumulateTime, 0.1f * accumulateTime);
-				chargeEffect.sizeRnd = XMFLOAT2(0.4, 0.4);
-				chargeEffect.scale = XMFLOAT2(1.05, 1.05);
-				chargeEffect.color = XMFLOAT4(1, 1, 0.1, 1);
-				chargeEffect.deltaColor = XMFLOAT4(0, -1.0 / 20, 0, -1.0 / 20);
-
 				chargeEffect.position = GetParent()->GetPosition();
 				VFX::Start(chargeEffect);
+
 				accumulateTime += ACCELERATION_RATE;
 			}
 			else
 			{
-				EmitterData chargeEffect;
+				//エフェクト
+				EmitterData chargeEffect = VFX::SetEmitterDataCharge();
 				chargeEffect.textureFileName = "PaticleAssets/flashA_Y.png";
-				chargeEffect.delay = 0;
-				chargeEffect.number = 80;
-				chargeEffect.lifeTime = 20;
-				chargeEffect.direction = XMFLOAT3(0, 1, 0);
-				chargeEffect.directionRnd = XMFLOAT3(90, 90, 90);
-				chargeEffect.speed = 0.1f;
-				chargeEffect.speedRnd = 0.8;
+				chargeEffect.color = VFX::BLUE;
 				chargeEffect.size = XMFLOAT2(0.2 * accumulateTime, 0.2 * accumulateTime);
-				chargeEffect.sizeRnd = XMFLOAT2(0.4, 0.4);
-				chargeEffect.scale = XMFLOAT2(1.05, 1.05);
-				chargeEffect.color = XMFLOAT4(0.1, 1, 1, 1);
-				chargeEffect.deltaColor = XMFLOAT4(0, -1.0 / 20, 0, -1.0 / 20);
-
 				chargeEffect.position = GetParent()->GetPosition();
 				VFX::Start(chargeEffect);
+
+				//スキルを最大まで溜めた
+				isFullPower = true;
 			}
 		}
 		//アクティブスキルキーを離したら
 		if (Input::IsKeyUp(DIK_E))
 		{
+			//スキルを発動
 			isSkill = true;
 		}
 	}
@@ -92,22 +76,23 @@ void Tuna::Skill()
 		}
 		else
 		{
-			EmitterData chargeEffect;
-			chargeEffect.textureFileName = "PaticleAssets/flashA_Y.png";
-			chargeEffect.delay = 0;
-			chargeEffect.number = 80;
-			chargeEffect.lifeTime = 20;
-			chargeEffect.direction = XMFLOAT3(0, 1, 0);
-			chargeEffect.directionRnd = XMFLOAT3(90, 90, 90);
-			chargeEffect.speed = 0.1f;
-			chargeEffect.speedRnd = 0.8;
+			//エフェクトの設定
+			EmitterData chargeEffect = VFX::SetEmitterDataCharge();
 			chargeEffect.size = XMFLOAT2(0.2 * accel, 0.2 * accel);
-			chargeEffect.sizeRnd = XMFLOAT2(0.4, 0.4);
-			chargeEffect.scale = XMFLOAT2(1.05, 1.05);
-			chargeEffect.color = XMFLOAT4(0.1, 1, 1, 1);
-			chargeEffect.deltaColor = XMFLOAT4(0, -1.0 / 20, 0, -1.0 / 20);
-
 			chargeEffect.position = GetParent()->GetPosition();
+			//青色に
+			chargeEffect.color = VFX::BLUE;
+			if (isFullPower)
+			{
+				//青色に
+				chargeEffect.textureFileName = "PaticleAssets/flashA_Y.png";
+				chargeEffect.color = VFX::BLUE;
+			}
+			else
+			{
+				//赤色に
+				chargeEffect.color = VFX::RED;
+			}			
 			VFX::Start(chargeEffect);
 
 			accel -= DECELERATION_RATE;
@@ -132,6 +117,7 @@ void Tuna::Skill()
 			skillTime	   = 0;
 			accelFlag	   = false;
 			isSkill		   = false;
+			isFullPower	   = false;
 			pPlayer->SetCanMove(true);
 		}		
 	}

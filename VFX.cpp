@@ -280,3 +280,26 @@ void VFX::End(int handle)
         }
     }
 }
+
+//チャージ中のエフェクトのデータをセットする
+EmitterData VFX::SetEmitterDataCharge()
+{
+    EmitterData ed;
+    ed.textureFileName = "PaticleAssets/CloudA.png";
+    ed.delay = 0;
+    ed.number = 80;
+    ed.lifeTime = 20;
+    ed.direction = XMFLOAT3(0, 1, 0);
+    ed.directionRnd = XMFLOAT3(90, 90, 90);
+    ed.speed = 0.1f;
+    ed.speedRnd = 0.8;
+    ed.sizeRnd = XMFLOAT2(0.4, 0.4);
+    ed.scale = XMFLOAT2(1.05, 1.05);
+    ed.deltaColor = XMFLOAT4(0, -1.0 / 20, 0, -1.0 / 20);
+
+    ed.color = XMFLOAT4(1, 1, 0.1, 1);
+    ed.size = XMFLOAT2(1,1);
+    ed.position = XMFLOAT3(0, 0, 0);
+
+    return ed;
+}

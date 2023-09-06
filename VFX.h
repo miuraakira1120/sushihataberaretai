@@ -56,6 +56,9 @@ struct EmitterData
 //エフェクトを管理するクラス
 namespace VFX
 {
+	const XMFLOAT4 RED  = { 1, 1, 0.1, 1 };
+	const XMFLOAT4 BLUE = { 0.1, 1, 1, 1 };
+
 	//エミッター（パーティクルの噴射口）
 	struct Emitter
 	{
@@ -121,5 +124,11 @@ namespace VFX
 	//エミッタを削除（エフェクト終了）
 	//引数：handle	エフェクトの番号
 	void End(int handle);
+
+	/// <summary>
+	/// チャージ中のエフェクトのデータをセットする
+	/// </summary>
+	EmitterData SetEmitterDataCharge();
+
 };
 

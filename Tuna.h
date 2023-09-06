@@ -37,6 +37,9 @@ class Tuna : public Neta
 	//スキル使用中に使うフラグ
 	bool accelFlag;
 
+	//スキルをMAXまでためたかどうか
+	bool isFullPower;
+
 public:
 	/// <summary>
 	/// コンストラクタ
