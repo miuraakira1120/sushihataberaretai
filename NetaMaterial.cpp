@@ -4,6 +4,7 @@
 #include "Engine/SphereCollider.h"
 #include "Engine/BoxCollider.h"
 #include "Tuna.h"
+#include "VFX.h"
 
 //コンストラクタ
 NetaMaterial::NetaMaterial(GameObject* parent)
@@ -79,6 +80,11 @@ void NetaMaterial::OnCollision(GameObject* pTarget)
         {
             //プレイヤーの子オブジェクトを追加
             CharacterInstantiate<Tuna>(pTarget, "maguro.fbx");
+
+            //エフェクト
+            EmitterData starEfect = VFX::SetEmitterDataStar();
+            starEfect.position = pTarget->GetPosition();
+            VFX::Start(starEfect);
 
             //中のモデルを消す
             pInternalModel->KillMe();

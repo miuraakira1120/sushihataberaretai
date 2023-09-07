@@ -281,6 +281,31 @@ void VFX::End(int handle)
     }
 }
 
+//星が出るエフェクトのデータをセットする
+EmitterData VFX::SetEmitterDataStar()
+{
+    EmitterData ed;
+    ed.textureFileName = "PaticleAssets/star.png";
+
+    ed.delay = 0;
+    ed.number = 150;
+    ed.lifeTime = 100;
+    ed.positionRnd = XMFLOAT3(0.5, 0, 0.5);
+    ed.direction = XMFLOAT3(0, 1, 0);
+    ed.directionRnd = XMFLOAT3(90, 90, 90);
+    ed.speed = 0.25f;
+    ed.speedRnd = 1;
+    ed.accel = 0.93f;
+    ed.size = XMFLOAT2(0.5f, 0.5f);
+    ed.sizeRnd = XMFLOAT2(0.4f, 0.4f);
+    ed.scale = XMFLOAT2(0.99f, 0.99f);
+    ed.color = XMFLOAT4(1.0f, 1.0f, 0.1f, 1.0f);
+    ed.deltaColor = XMFLOAT4(0.0f, 0.0f, 0.0f, 0.0f);
+    ed.gravity = 0.003f;
+
+    return ed;
+}
+
 //チャージ中のエフェクトのデータをセットする
 EmitterData VFX::SetEmitterDataCharge()
 {

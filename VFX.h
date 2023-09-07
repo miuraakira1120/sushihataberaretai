@@ -130,5 +130,11 @@ namespace VFX
 	/// </summary>
 	EmitterData SetEmitterDataCharge();
 
+	/// <summary>
+	/// 星が出るエフェクトのデータをセットする
+	/// </summary>
+	/// <returns></returns>
+	EmitterData SetEmitterDataStar();
+
 };
 
