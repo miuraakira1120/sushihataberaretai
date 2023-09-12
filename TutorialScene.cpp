@@ -15,10 +15,10 @@ TutorialScene::TutorialScene(GameObject* parent)
 void TutorialScene::Initialize()
 {
 	//プレイヤーを生成
-	CharacterInstantiate<Player>(this, "syari.fbx");
+	CharacterInstantiate<Player>(this, "syari.fbx")->SetPosition(0,30,0);
 
 	//ステージを生成
-	GameManager::SetNowStage((StageBase*)StageInstantiate<TutorialStage>(this, "Tutorial.fbx"));
+	GameManager::SetNowStage((StageBase*)StageInstantiate<TutorialStage>(this, "stageTest.fbx"));
 
 	//カメラのコントローラーを生成
 	Instantiate<Controller>(this);
@@ -28,8 +28,6 @@ void TutorialScene::Initialize()
 void TutorialScene::Update()
 {
 
-	
-	
 }
 
 //描画
