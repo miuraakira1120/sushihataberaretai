@@ -37,7 +37,7 @@ bool Collider::IsHitBoxVsBox(BoxCollider* boxA, BoxCollider* boxB)
 	rotateY = XMMatrixRotationY(XMConvertToRadians(boxA->pGameObject_->GetTransform().rotate_.y));
 	rotateZ = XMMatrixRotationZ(XMConvertToRadians(boxA->pGameObject_->GetTransform().rotate_.z));
 	//回転行列を求める
-	m = rotateZ * rotateY * rotateX;
+	m = rotateZ * rotateX * rotateY;
 	//リストにセットする
 	std::vector<XMVECTOR> fAxisA = { 
 		XMVector3TransformCoord(AXIS_BASE_X, m), 
@@ -49,8 +49,7 @@ bool Collider::IsHitBoxVsBox(BoxCollider* boxA, BoxCollider* boxB)
 	rotateX = XMMatrixRotationX(XMConvertToRadians(boxB->pGameObject_->GetTransform().rotate_.x));
 	rotateY = XMMatrixRotationY(XMConvertToRadians(boxB->pGameObject_->GetTransform().rotate_.y));
 	rotateZ = XMMatrixRotationZ(XMConvertToRadians(boxB->pGameObject_->GetTransform().rotate_.z));
-	//回転行列を求める
-	m = rotateZ * rotateY * rotateX;
+	
 	//リストにセットする
 	std::vector<XMVECTOR> fAxisB = {
 		XMVector3TransformCoord(AXIS_BASE_X, m),

@@ -46,6 +46,8 @@ XMFLOAT3 Neta::GetParentPos()
 //•¨—‰‰Z
 void Neta::PhysicalOperation()
 {
+    XMFLOAT3 parentRotate = GetParent()->GetRotate();
+    parentRotate = Math::Float3Remnant(parentRotate, 180);
 }
 
 //—‰º‰‰o

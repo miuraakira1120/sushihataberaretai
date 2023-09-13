@@ -18,7 +18,7 @@ void TutorialScene::Initialize()
 	CharacterInstantiate<Player>(this, "syari.fbx")->SetPosition(0,30,0);
 
 	//ステージを生成
-	GameManager::SetNowStage((StageBase*)StageInstantiate<TutorialStage>(this, "stageTest.fbx"));
+	GameManager::SetNowStage((StageBase*)StageInstantiate<TutorialStage>(this, "Stage1.fbx"));
 
 	//カメラのコントローラーを生成
 	Instantiate<Controller>(this);

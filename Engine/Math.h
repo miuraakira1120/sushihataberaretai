@@ -72,6 +72,15 @@ namespace Math
 	/// <param name="y"></param>
 	/// <returns></returns>
 	//float PerlinNoise(float x, float y);
+
+	/// <summary>
+	/// XMFloat3の余りを求める
+	/// </summary>
+	/// <param name="a"></param>
+	/// <param name="b"></param>
+	/// <returns>余り(XMFLOAT3はint型にキャストされる)</returns>
+	XMFLOAT3 Float3Remnant(XMFLOAT3 a, int b);
+
 };
 
 

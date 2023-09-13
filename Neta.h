@@ -12,6 +12,8 @@ private:
         1.5f,  //ネタのZのサイズ（1倍）
     };
 
+    const float MAX_ANGLE = 360.f;
+
     int   hModel_;               //モデル番号
     float gravity;               //今受けている重力の力(マイナスなら重力を振り切って上に行く)
 

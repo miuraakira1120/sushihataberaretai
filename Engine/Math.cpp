@@ -93,6 +93,12 @@ namespace Math
 		return pos;
 	}
 
+	//XMFloat3の余りを求める
+	XMFLOAT3 Float3Remnant(XMFLOAT3 a, int b)
+	{
+		return XMFLOAT3((int)a.x % b, (int)a.y % b, (int)a.z % b);
+	}
+
 	//// パーリンノイズの生成関数
 	//// ランダムな値を生成する関数
 	//float Random()
