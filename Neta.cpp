@@ -46,8 +46,12 @@ XMFLOAT3 Neta::GetParentPos()
 //物理演算
 void Neta::PhysicalOperation()
 {
+    //親の向きを取得
     XMFLOAT3 parentRotate = GetParent()->GetRotate();
-    parentRotate = Math::Float3Remnant(parentRotate, 180);
+
+    //1周（360）で割る
+    parentRotate = Math::Float3Remnant(parentRotate, MAX_ANGLE);
+    parentRotate = Math::Float3Add(parentRotate, -(MAX_ANGLE / 2));
 }
 
 //落下演出

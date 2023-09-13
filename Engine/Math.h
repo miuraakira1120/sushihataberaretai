@@ -15,6 +15,14 @@ namespace Math
 	XMFLOAT3 Float3Add(XMFLOAT3 a, XMFLOAT3 b);
 
 	/// <summary>
+	/// XMFloat3‚Ì‘«‚µZ
+	/// </summary>
+	/// <param name="a">‘«‚³‚ê‚é”</param>
+	/// <param name="b">‘«‚·”</param>
+	/// <returns></returns>
+	XMFLOAT3 Float3Add(XMFLOAT3 a, float b);
+
+	/// <summary>
 	/// XMFloat3‚Ìˆø‚«Z
 	/// </summary>
 	/// <param name="ˆø”1 : ˆø‚©‚ê‚é”"></param>

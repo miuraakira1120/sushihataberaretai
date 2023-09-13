@@ -15,6 +15,12 @@ namespace Math
 		return XMFLOAT3(a.x + b.x, a.y + b.y, a.z + b.z);
 	}
 
+	//XMFloat3‚Ì‘«‚µŽZ
+	XMFLOAT3 Float3Add(XMFLOAT3 a, float b)
+	{
+		return XMFLOAT3(a.x + b, a.y + b, a.z + b);
+	}
+
 	/// <summary>
 	/// XMFloat3‚Ìˆø‚«ŽZ
 	/// </summary>
